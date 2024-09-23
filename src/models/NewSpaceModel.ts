@@ -1,13 +1,14 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
-// Define the interface for a question
+// Define the interface for a NewSpace
 interface INewSpace extends Document {
     spaceName: string;
     headerTitle: string;
     customField: string;
     collectionType: string;
-    imgUrl: string;
-    questions: string[];  // Changed question field to an array of strings
+    imgUrl?: string; // Make this optional if not always provided
+    questions: string[]; 
+    createdBy: string; // This field will store the email of the creator
 }
 
 // Create the schema
@@ -16,10 +17,10 @@ const NewSpaceSchema: Schema = new mongoose.Schema({
     headerTitle: { type: String, required: true },
     customField: { type: String, required: true },
     collectionType: { type: String, default: "text and video" },
-    imgUrl: { type: String },
-    questions: [{ type: String }]  // This defines an array of strings for the questions
+    imgUrl: { type: String, default: null }, // Default to null if not provided
+    questions: [{ type: String }], // Array of strings for questions
+    createdBy: { type: String, required: true } // Required field for the creator's email
 });
-
 
 // Define the model with the interface type
 const NewSpace: Model<INewSpace> = mongoose.models.NewSpace || mongoose.model<INewSpace>('NewSpace', NewSpaceSchema);

@@ -74,7 +74,7 @@ function Signup() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-white  h-12  rounded-md mx-10"
+                  className="bg-white  h-12  rounded-md mx-10 text-black"
                 />
 
                 <label className="m-2 ml-10 font-bold text-lg">Email:</label>
@@ -83,7 +83,7 @@ function Signup() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10"
+                  className="bg-white  h-12 rounded-md mx-10 text-black"
                 />
 
                 <label className="m-2 ml-10 font-bold text-lg">Password:</label>
@@ -92,12 +92,12 @@ function Signup() {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10"
+                  className="bg-white  h-12 rounded-md mx-10 text-black"
                 />
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="btn btn-primary font-bold text-xl mt-4 w-1/4"
+                    className="btn btn-primary font-bold text-xl mt-4 w-1/4 "
                     onClick={() => router.push('/dashboard')}
                   >
                     Sign up

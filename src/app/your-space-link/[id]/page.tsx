@@ -33,12 +33,15 @@ function YourSpaceLinkPage() {
   }
 
   return (
-    <div className='flex justify-center'>
-      <div className='flex flex-col justify-center border'>
-        <div>GIF</div>
-        <h1>{formData.spaceName} Added successfully 🥳</h1>
-        <h2>Here is the link for your customers:</h2>
-        <h3 onClick={redirectUser}>{creatingLink()}</h3>
+    <div className='flex justify-center h-3/4'>
+      <div className='flex flex-col justify-center border rounded-md'>
+        <div><img src="/excited-minions-gif.gif" alt="minions"  className='w-full rounded-md'/></div>
+        <div className='flex justify-center flex-col'>
+        <h1 className='mt-2 text-center font-semibold text-3xl'>{formData.spaceName} Added successfully 🥳</h1>
+        <h2 className='text-center font-semibold mt-3 text-2xl'>Here is the link for your customers:</h2>
+        <h3  className = 'font-mono text-center mt-2 text-xl' onClick={redirectUser}>{creatingLink()}</h3>
+        </div>
+        
       </div>
     </div>
   );

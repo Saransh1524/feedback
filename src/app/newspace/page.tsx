@@ -159,8 +159,8 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
 
 
   return (
-    <div className="h-screen bg-black flex p-8">
-      <div className="w-1/3 h-1/2 mr-3 rounded-lg bg-zinc-900">
+    <div className="h-screen  flex p-8">
+      <div className="w-1/3 h-1/2 mr-3 rounded-lg bg-zinc-800">
         <div>❤️</div>
         <div className="flex flex-col">
           <div className="flex justify-center">
@@ -188,7 +188,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
         </div>
       </div>
  
-      <div className="w-2/3  rounded-lg bg-zinc-900">
+      <div className="w-2/3  rounded-lg bg-zinc-800">
         <button></button>
         <button></button>
        

@@ -18,11 +18,13 @@ const firebaseConfig = {
 let app: any;
 let analytics: any;
 let imageDB: any;
+let videoDB: any;
 
 if (typeof window !== 'undefined') {
   app = initializeApp(firebaseConfig);
   analytics = getAnalytics(app);
   imageDB = getStorage(app);
+  videoDB = getStorage(app);
 }
 
-export { app, analytics, imageDB };
+export { app, analytics, imageDB, videoDB};

@@ -5,8 +5,11 @@ import { useState } from "react";
 import axios from "axios";
 import SignInButton from "../components/SignInButton";
 import { useSession, signIn, signOut } from "next-auth/react";
+
+import { useRouter } from 'next/navigation';
 // import handler from "../api/auth/signup"
 function Signup() {
+  const router = useRouter(); // Initialize the useRouter hook
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -31,6 +34,7 @@ function Signup() {
     try {
       const response = await axios.post("/api/auth/login", formData); // Replace with your API endpoint
       console.log(response.data);
+      router.push('/dashboard');
 
       // Handle success, e.g., redirect to login page
     } catch (error: any) {
@@ -72,7 +76,7 @@ function Signup() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10"
+                  className="bg-white  h-12 rounded-md mx-10 text-black"
                 />
 
                 <label className="m-2 ml-10 font-bold text-lg">Password:</label>
@@ -81,12 +85,13 @@ function Signup() {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10"
+                  className="bg-white  h-12 rounded-md mx-10 text-black"
                 />
                 <div className="flex justify-center">
                   <button
                     type="submit"
                     className="btn btn-primary font-bold text-xl mt-4 w-1/4"
+                    
                   >
                     Sign in
                   </button>
