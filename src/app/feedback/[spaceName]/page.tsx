@@ -5,7 +5,16 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { videoDB } from '../../../firebase/Config'; // Import the correct storage instance for videos
 
 // Modal Component for Video Recording
-const VideoModal = ({ isVisible, onClose, startRecording, stopRecording, isRecording, videoRef }) => {
+interface VideoModalProps {
+  isVisible: boolean;
+  onClose: () => void;
+  startRecording: () => void;
+  stopRecording: () => void;
+  isRecording: boolean;
+  videoRef: React.RefObject<HTMLVideoElement>;
+}
+
+const VideoModal: React.FC<VideoModalProps> = ({ isVisible, onClose, startRecording, stopRecording, isRecording, videoRef }) => {
   if (!isVisible) return null;
 
   return (
