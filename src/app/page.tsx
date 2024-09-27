@@ -10,7 +10,7 @@ export default function Home() {
 
     <div className="font-bold text-4xl font-mono mt-10"><p className="text-center">Trusted customers</p>
       <div className="grid grid-cols-4 gap-4">
-      <Image
+      {/* <Image
       src="/img1.jpeg"
       alt="Picture of a cat"
       width={500}
@@ -57,7 +57,7 @@ export default function Home() {
       alt="Picture of a cat"
       width={500}
       height={300}
-    />
+    /> */}
 
       </div>
     </div>

@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 import Smallspace from 'app/components/Smallspace';
 import NewSpace from 'models/NewSpaceModel';
 import connectDB from 'lib/mongodb';
+import { useSession } from 'next-auth/react';
 
 interface Space {
   _id: string;
@@ -14,16 +15,21 @@ interface Space {
   imgUrl: string;
 }
 
+
 async function page() {
+    // Get the session data
   await connectDB(); // Ensure database connection
 
   const authToken = cookies().get('authToken')?.value;
-  if (!authToken) {
+  if (!authToken ) {
     return <p>You need to be logged in to view this page.</p>;
   }
 
   let userEmail = '';
   try {
+    if (!authToken) {
+      throw new Error('Auth token is undefined');
+    }
     const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET!);
     userEmail = (decodedToken as any).userEmail;
   } catch (error) {
@@ -45,8 +51,8 @@ async function page() {
       <div className='flex justify-between p-4'>
         <div className='text-bold text-2xl'>Spaces</div>
         <div>
-          <button className='btn btn-primary text-bold text-xl'>
-            <Link href="newspace">+Create new space</Link>
+          <button className='btn text-bold text-xl'>
+            <Link href="newspace" >+Create new space</Link>
           </button>
         </div>
       </div>

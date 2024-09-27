@@ -1,13 +1,10 @@
 "use client";
 import Link from "next/link";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import SignInButton from "../components/SignInButton";
-import { useSession, signIn, signOut } from "next-auth/react";
-
 import { useRouter } from 'next/navigation';
-// import handler from "../api/auth/signup"
+import { signIn } from "next-auth/react";
+
 function Signup() {
   const router = useRouter(); // Initialize the useRouter hook
   const [error, setError] = useState("");
@@ -18,95 +15,90 @@ function Signup() {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // env varibles cannot be accessed on the client side 
-    // console.log('MONGO_URI:', process.env.MONGO_URI);
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
   };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     setIsLoading(true);
     setError("");
 
     try {
       const response = await axios.post("/api/auth/login", formData); // Replace with your API endpoint
       console.log(response.data);
-      router.push('/dashboard');
-
-      // Handle success, e.g., redirect to login page
+      router.push('/dashboard'); // Redirect after login
     } catch (error: any) {
-      setError(error.response.data.message || "An error occurred");
+      setError(error.response?.data.message || "An error occurred");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div>
-      <div className="flex flex-col justify-center">
-        <div className="font-bold text-4xl flex justify-center">
-          <h1 className="p-4 m-4">Welcome back 👋</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4">
+      <div className="w-full max-w-md p-8 bg-gray-800 rounded-xl shadow-lg">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 text-white">
+          Welcome back 👋
+        </h1>
+        
+        <div className="flex justify-center mb-6">
+          <button
+            className="w-full py-3 text-lg sm:text-xl font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+            onClick={() => signIn('google')}
+          >
+            Sign in with Google
+          </button>
         </div>
-        <div className="justify-center flex">
-          <div className="max-h-screen border-spacing-1 w-1/3 flex-col bg-gray-800 rounded-xl mb-12">
-            <div className="justify-center flex ">
-              <button className="btn btn-primary font-bold text-lg mt-3"
-              onClick={() => signIn('google')}
-              >
-                Signin with google
-              </button>
-            </div>
 
-            <h1 className="text-center font-bold text-xl mt-6">
-              or, Enter your email and password
-            </h1>
-            <div className="flex flex-col">
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col justify-center"
-              >
-                
+        <h2 className="text-lg sm:text-xl text-center font-semibold mb-6 text-white">
+          or, enter your email and password
+        </h2>
 
-                <label className="m-2 ml-10 font-bold text-lg">Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10 text-black"
-                />
-
-                <label className="m-2 ml-10 font-bold text-lg">Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="bg-white  h-12 rounded-md mx-10 text-black"
-                />
-                <div className="flex justify-center">
-                  <button
-                    type="submit"
-                    className="btn btn-primary font-bold text-xl mt-4 w-1/4"
-                    
-                  >
-                    Sign in
-                  </button>
-                </div>
-              </form>
-              <div className="flex justify-center m-3">
-                <p className="font-bold text-xl">
-                  Do you have an account?{" "}
-                  <Link href="/signup" className="text-blue-500">
-                    Sign up
-                  </Link>
-                </p>
-              </div>
-            </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex flex-col">
+            <label className="text-lg font-bold text-white">Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="h-12 px-4 rounded-md bg-white text-black"
+            />
           </div>
+
+          <div className="flex flex-col">
+            <label className="text-lg font-bold text-white">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="h-12 px-4 rounded-md bg-white text-black"
+            />
+          </div>
+
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="w-full py-3 text-lg sm:text-xl font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md"
+            >
+              {isLoading ? 'Signing in...' : 'Sign in'}
+            </button>
+          </div>
+
+          {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+        </form>
+
+        <div className="text-center mt-6">
+          <p className="text-white">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-blue-400 underline">
+              Sign up
+            </Link>
+          </p>
         </div>
       </div>
     </div>

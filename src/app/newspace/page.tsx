@@ -47,10 +47,7 @@ function Newspace() {
   const handleRedirect = () => {
     router.push('/your-space-link'); 
   };
-
-
-
-
+  
   const handleRemoveInput = (id: number) => {
     const newInputs = inputs.filter((input) => input.id !== id);
     setInputs(newInputs);
@@ -183,12 +180,12 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
               </div>
             ))}
           </div>
-          <button className="btn btn-primary m-2 ">Record a video</button>
+          <button className="btn btn-primary m-2">Record a video</button>
           <button className="btn btn-primary m-2">Send in Text</button>
         </div>
       </div>
  
-      <div className="w-2/3  rounded-lg bg-zinc-800">
+      <div className="w-2/3  rounded-lg bg-zinc-800 h-screen">
         <button></button>
         <button></button>
        
@@ -202,7 +199,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
             </label>
             <input
               type="text"
-              className="w-4/5 h-10 m-1"
+              className="w-4/5 h-10 m-1 text-black"
               name="spaceName"
               onChange={handleChange}
             />
@@ -230,7 +227,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
             <input
               type="text"
               name="headerTitle"
-              className="w-4/5 h-10 m-1"
+              className="w-4/5 h-10 m-1 text-black"
               onChange={handleChange}
             />
 
@@ -240,7 +237,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
             <input
               type="text"
               name="customField"
-              className="w-4/5 h-10 m-1"
+              className="w-4/5 h-10 m-1 text-black"
               onChange={handleChange}
             />
 
@@ -251,7 +248,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
             </label>
 
 
-            <div className="w-4/5 h-10 m-1">
+            <div className="w-4/5 h-10 m-1 text-black">
               {inputs.map((input) => (
                 <div key={input.id}>
                   <input
@@ -268,7 +265,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      className="size-6"
+                      className="size-6 text-white"
                     >
                       <path
                         stroke-linecap="round"
@@ -283,13 +280,14 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
                 className="border-blue-500 rounded-full"
                 onClick={handleAddInput}
               >
+                <div className="flex justify-end w-2/5 mt-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-6 text-white "
                 >
                   <path
                     stroke-linecap="round"
@@ -297,13 +295,15 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
                     d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
+                </div>
+                
               </div>
             </div>
 
             <label htmlFor="" className="text-xl m-1">
               collection type
             </label>
-            <select  className="h-10 m-1 w-2/12"  name="collectionType"
+            <select  className="h-10 m-1 w-2/12 text-black"  name="collectionType"
   id="collectionType"
   
  >

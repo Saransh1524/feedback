@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     // Find the user by email
     const user = await User.findOne({ email });
-    console.log("aditya mil gya bhai")
+    // console.log("aditya mil gya bhai")
     if (!user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
