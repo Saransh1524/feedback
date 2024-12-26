@@ -71,7 +71,7 @@ const Page: React.FC = () => {
     customField: string;
     collectionType: string;
     imgUrl: string;
-    questions: string[]; // Define questions as an array of strings
+    questions: string[]; 
   }
 
   const [formData, setFormData] = useState<FormData | null>(null);
@@ -81,6 +81,7 @@ const Page: React.FC = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [clientEmail, setClientEmail] = useState<string>(''); // New state for email input
+  const [textReview, setTextReview] = useState<string>('');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
@@ -170,7 +171,8 @@ const Page: React.FC = () => {
       const response = await axios.post('/api/clientReview', {
         clientEmail: clientEmail,
         spaceName: spaceName,
-        videoUrl: videoUrl
+        videoUrl: videoUrl,
+        textReview: textReview, 
       });
       console.log('Client review saved:', response.data);
     } catch (error) {
@@ -202,7 +204,9 @@ const Page: React.FC = () => {
         <div className="text-center mb-4 text-lg sm:text-2xl font-bold">QUESTIONS</div>
         <div className="text-center mb-4 text-base sm:text-xl font-semibold">
           <h1>{formData?.questions[0]}</h1>
-          <h2>{formData?.questions[1]}</h2>
+          <h1>{formData?.questions[1]}</h1>
+          <div><input type="text" name="answer" id="" placeholder='Enter your answer' value={textReview} onChange={(e) => setTextReview(e.target.value)} className=' text-black h-40 w-40' /></div>
+          
         </div>
         <div className='flex justify-center mb-2 text-black'>
           <input 
@@ -211,6 +215,7 @@ const Page: React.FC = () => {
             onChange={(e) => setClientEmail(e.target.value)} // Handle email input change
             placeholder='Enter your email' 
           />
+          <div className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => saveClientReview(downloadUrl)} ><button>Submit Review</button></div>
         </div>
 
         {error && (

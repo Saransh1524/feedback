@@ -49,10 +49,10 @@ async function page() {
   return (
     <div className='h-screen'>
       <div className='flex justify-between p-4'>
-        <div className='text-bold text-2xl'>Spaces</div>
+        <div className="text-bold text-2xl">Spaces</div>
         <div>
-          <button className='btn text-bold text-xl'>
-            <Link href="newspace" >+Create new space</Link>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <Link href="newspace">+ Create new space</Link>
           </button>
         </div>
       </div>

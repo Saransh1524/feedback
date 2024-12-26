@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Invalid password' }, { status: 401 });
     }
 
-    // Ensure JWT_SECRET is defined
+  
     if (!process.env.JWT_SECRET) {
       return NextResponse.json({ message: 'JWT secret is not defined' }, { status: 500 });
     }

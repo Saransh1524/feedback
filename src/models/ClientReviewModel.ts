@@ -5,13 +5,15 @@ interface IClientReview extends Document {
   clientEmail: string;
   spaceName: string;
   videoUrl: string;
+  textReview: string;
 }
 
 // Create a schema for ClientReview
 const clientReviewSchema: Schema = new mongoose.Schema({
   clientEmail: { type: String, required: true },
   spaceName: { type: String, required: true },
-  videoUrl: { type: String, required: true },
+  videoUrl: { type: String, required: false },
+  textReview: { type: String, required: false },
 }, {
   timestamps: true, // Optional: This adds createdAt and updatedAt timestamps
 });

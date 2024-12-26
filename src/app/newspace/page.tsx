@@ -26,7 +26,7 @@ function Newspace() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [inputValues, setInputValues] = useState(Array(inputs.length).fill(""));
   // const [img, setImg] = useState('');
-  
+
   const [formData, setFormData] = useState({
     spaceName: "",
     spaceLogo: "",
@@ -319,7 +319,7 @@ const createNewSpace = async (event: React.FormEvent<HTMLFormElement>) => {
             </select>
 
             <div className="flex justify-center">
-              <button className="btn btn-primary font-bold text-xl" type="submit" >
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" >
                 Create a new space
               </button>
             </div>
