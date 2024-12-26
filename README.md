@@ -1,4 +1,12 @@
+**FeedbackPro**     
+
+FeedbackPro is a powerful web app designed to help businesses and companies gather authentic customer feedback in an easy and engaging way. By creating a product or company space on the platform, businesses can generate a unique link to share with their customers. Customers can provide feedback in either recorded video format or through text, offering flexibility and ease of use.
+
+Business owners can then review the feedback and showcase it on their website or social media accounts, building trust and demonstrating the authenticity of their product to potential new customers.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
 
